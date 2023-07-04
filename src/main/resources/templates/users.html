@@ -1,9 +1,11 @@
+<!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://thymeleaf.org">
 	<head>
 		<title>Manage Users</title>
 	  <link rel="stylesheet" 
 	        type="text/css" 
 	        th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <meta charset="UTF-8"/>
 	</head>
 	<body>
 		<div class="container-fluid text-center">
@@ -13,7 +15,7 @@
 		       th:href="@{/users/new}">Add New User</a>
 	    </div>
       <div>
-		    <table class="table table-bordered">
+		    <table class="table table-bordered text-center">
 				  <thead class="thead-dark">
 					  <tr>
 						  <th>ID</th>
