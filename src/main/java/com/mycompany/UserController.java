@@ -44,7 +44,7 @@ public class UserController {
     return "redirect:/users";    
   }
   
-  @GetMapping("/users/edit/{}")
+  @GetMapping("/users/edit/{id}")
   public String showEditForm(@PathVariable("id") Integer id, 
                              Model model,
                              RedirectAttributes ra
@@ -57,10 +57,26 @@ public class UserController {
 
       return "user_form";    
     } catch (UserNotFoundException e) {
-      ra.addFlashAttribute("message", "The user has been saved successfully.");
+      ra.addFlashAttribute("message", e.getMessage());
       
       return "redirect:/users";    
     }
+  }
+  
+  @GetMapping("/users/delete/{id}")
+  public String showDeleteForm(@PathVariable("id") Integer id, 
+                               RedirectAttributes ra
+                               ) {
+    
+    try {
+      service.delete(id);
+
+      ra.addFlashAttribute("message", "User has been deleted.");
+    } catch (UserNotFoundException e) {
+      ra.addFlashAttribute("message", e.getMessage());
+    }
+    
+    return "redirect:/users";    
   }
 
 }
